@@ -2,8 +2,6 @@
 
 list_strings= ['Mary had a little lamb','Its fleece was white as snow, yeah.',"Everywhere the child went,","The little lamb was sure to go, yeah","He followed her to school one day"]
 
-# check if words_and_position is populated
-is_function_acessed= False 
 
 #in order to save every words and there poistion in index
 words_and_position={}
@@ -11,17 +9,13 @@ words_and_position={}
 def SearchList(term):
     # get required variable which are out-of-scope
     global list_strings
-    global is_function_acessed
     global words_and_position
-
-    # variable for getting index of words that are found
-    index_of_sentence=[]
 
     # capitalizing search term in order to make it case-insensitive
     term= term.upper()
     
     # if no value in words_and_ position dictionary run this once
-    if not is_function_acessed:
+    if not words_and_position:
         for i in list_strings:
             x = i.split(' ')
             for j in x:
@@ -40,8 +34,9 @@ def SearchList(term):
     
     #checking if given word is in dicitonary or not it checks provided words with hash value of key so O(1)
     if term in words_and_position:
-        index_of_sentence= words_and_position[term]
-    return index_of_sentence
+        return words_and_position[term]
+    else:
+        return []
 
 y=SearchList('everywhere')
 if y:
